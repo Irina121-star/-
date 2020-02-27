@@ -1,34 +1,42 @@
 
-//! @file       proba_lib.cpp
-//! @brief      Это функция рисует снеговика
-//! @mainpage   Проба. Библиотека.
-//! @warning    <b>Это пробная версия. Для использования библиотеки не требуется согласование с ее автором.</b>
-
+//! @code
+            sneg_draw (400, 500, 20, t);
+//! @endcode
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "TXLib.h"
-
-//! @brief      Это функция рисует снеговика
-//! @param      x   абсцисса центра круга - основания
-//! @param      y   ордината центра круга - основания
-//! @param      r   радиус центра круга - основания
-//! @param      t   параметр смещения
-
 void sneg_draw (double x, double y, double r, int t);
-
-
-
-//! @brief      Это функция рисует дом
-//! @param      x0   абсцисса левой верхней вершины прямоугольника
-//! @param      y0   ордината левой верхней вершины прямоугольника
-//! @param      x1   абсцисса правой нижней вершины прямоугольника
-//! @param      y1   абсцисса правой нижней вершины прямоугольника
 void dom_draw (double x0, double y0, double x1, double y1);
-
-//! @brief      Это функция приветствия
 void DrawHello();
+void  Titr ();
 
+int main()
+    {
+    txCreateWindow (800, 600);
+    txSetColor (RGB (0, 128, 0), 5);
+
+    DrawHello();
+
+    int t = 0;
+    while(t <= 100)
+    {
+    txSetFillColor (TX_BLUE);
+    txClear ();
+
+    sneg_draw (400 + t * 2, 450, 20, t);
+    sneg_draw (400, 500, 20, t);
+    dom_draw (50, 400, 300, 550);
+
+    t++;
+    txSleep(100);
+    }
+
+    Titr ();
+
+    return 0;
+
+}
 
 void sneg_draw (double x, double y, double r, int t)
     {
@@ -39,9 +47,6 @@ void sneg_draw (double x, double y, double r, int t)
     txLine(x -35 ,y + 25,x - 75, y + abs((t % 7) + 25));
     txSetFillColor (TX_WHITE);
     }
-
-
-
 
 void dom_draw (double x0, double y0, double x1, double y1)
     {
@@ -73,6 +78,19 @@ void DrawHello()
     txSleep(100);
     }
 }
+void  Titr ()
+    {
+    txSetColor (TX_BLACK);
+    int y3=500;
+    while (y3>10)
+        {
+        txClear ();
+        txDrawText  (10, y3, 790, y3+100, "Автор ###########################################################################################################################.\n");
+        y3=y3-10;
+        txSleep(100);
+        }
 
 
+
+    }
 
