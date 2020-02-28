@@ -1,8 +1,4 @@
 
-//! @code
-            sneg_draw (400, 500, 20, t);
-//! @endcode
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "TXLib.h"
